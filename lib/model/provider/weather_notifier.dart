@@ -14,6 +14,10 @@ class WeatherNotifier extends ChangeNotifier {
   List<Map<dynamic, dynamic>> _day6 = [];
   bool _dataLoading = false;
   bool _yesterdayExist = false;
+  List maxTemp = [];
+  double maxTempVal = 0;
+  List minTemp = [];
+  double minTempVal = 400;
   var _allData = [];
   String date1 = '';
   String date2 = '';
@@ -29,6 +33,10 @@ class WeatherNotifier extends ChangeNotifier {
   WeatherNotifier(this.position) {
     getWeatherData(position);
   }
+
+  get minTempList => minTemp;
+
+  get maxTempList => maxTemp;
 
   get dataLoading => _dataLoading;
 
@@ -133,6 +141,67 @@ class WeatherNotifier extends ChangeNotifier {
         });
       }
     });
+    for (int i = 0; i < _day1.length; i++) {
+      if (maxTempVal < _day1[i]['main']['temp_max']) {
+        maxTempVal = _day1[i]['main']['temp_max'];
+      }
+      if (minTempVal > _day1[i]['main']['temp_min']) {
+        minTempVal = _day1[i]['main']['temp_min'];
+      }
+    }
+    maxTemp.add(maxTempVal);
+    minTemp.add(minTempVal);
+    for (int i = 0; i < _day2.length; i++) {
+      if (maxTempVal < _day2[i]['main']['temp_max']) {
+        maxTempVal = _day2[i]['main']['temp_max'];
+      }
+      if (minTempVal > _day2[i]['main']['temp_min']) {
+        minTempVal = _day2[i]['main']['temp_min'];
+      }
+    }
+    maxTemp.add(maxTempVal);
+    minTemp.add(minTempVal);
+    for (int i = 0; i < _day3.length; i++) {
+      if (maxTempVal < _day3[i]['main']['temp_max']) {
+        maxTempVal = _day3[i]['main']['temp_max'];
+      }
+      if (minTempVal > _day3[i]['main']['temp_min']) {
+        minTempVal = _day3[i]['main']['temp_min'];
+      }
+    }
+    maxTemp.add(maxTempVal);
+    minTemp.add(minTempVal);
+    for (int i = 0; i < _day4.length; i++) {
+      if (maxTempVal < _day4[i]['main']['temp_max']) {
+        maxTempVal = _day4[i]['main']['temp_max'];
+      }
+      if (minTempVal > _day4[i]['main']['temp_min']) {
+        minTempVal = _day4[i]['main']['temp_min'];
+      }
+    }
+    maxTemp.add(maxTempVal);
+    minTemp.add(minTempVal);
+    for (int i = 0; i < _day5.length; i++) {
+      if (maxTempVal < _day5[i]['main']['temp_max']) {
+        maxTempVal = _day5[i]['main']['temp_max'];
+      }
+      if (minTempVal > _day5[i]['main']['temp_min']) {
+        minTempVal = _day5[i]['main']['temp_min'];
+      }
+    }
+    maxTemp.add(maxTempVal);
+    minTemp.add(minTempVal);
+    for (int i = 0; i < _day6.length; i++) {
+      if (maxTempVal < _day6[i]['main']['temp_max']) {
+        maxTempVal = _day6[i]['main']['temp_max'];
+      }
+      if (minTempVal > _day6[i]['main']['temp_min']) {
+        minTempVal = _day6[i]['main']['temp_min'];
+      }
+    }
+    maxTemp.add(maxTempVal);
+    minTemp.add(minTempVal);
+
     allData.add(day1);
     allData.add(day2);
     allData.add(day3);

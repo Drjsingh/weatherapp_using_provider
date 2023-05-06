@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "Weather App",
                 style: ThemeStyle.blackText28,
               ),
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(20))),
                   minWidth: 200,
                   height: 42,
-                  color: Color(0x6f6837f8),
+                  color: const Color(0x6f6837f8),
                   child: const Text(
                     'Get Started',
                     style: ThemeStyle.whiteText16,

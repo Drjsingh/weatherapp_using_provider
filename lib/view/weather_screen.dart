@@ -75,14 +75,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         textAlign: TextAlign.center,
                       ),
                       Container(
-                          padding: EdgeInsets.all(10),
-                          margin: EdgeInsets.only(bottom: 10, top: 10),
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.only(bottom: 10, top: 10),
                           width: boxWidth,
                           height: boxHeight * 0.18,
                           decoration: BoxDecoration(
                               color: Colors.redAccent.withOpacity(0.2),
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
+                                  const BorderRadius.all(Radius.circular(20))),
                           child: Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -98,15 +98,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              "Max : ${(todaydata[0]['main']['temp_max'] - 273.15).round()}\u2103",
+                                              "Max : ${(provider.maxTempList[0] - 273.15).round()}\u2103",
                                               style: ThemeStyle.whiteText16,
                                               textAlign: TextAlign.center,
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               width: 20,
                                             ),
                                             Text(
-                                              "Min : ${(todaydata[0]['main']['temp_min'] - 273.15).round()}\u2103",
+                                              "Min : ${(provider.minTempList[0] - 273.15).round()}\u2103",
                                               style: ThemeStyle.whiteText16,
                                               textAlign: TextAlign.center,
                                             ),
@@ -150,7 +150,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         decoration: BoxDecoration(
                             color: Colors.redAccent.withOpacity(0.2),
                             borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
+                                const BorderRadius.all(Radius.circular(20))),
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: todaydata.length,
@@ -176,7 +176,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                     color: Colors.white,
                                   ),
                                   Text(
-                                    "${(todaydata[index]['main']['temp_min'] - 273.15).round()}\u2103",
+                                    "${(todaydata[index]['main']['feels_like'] - 273.15).round()}\u2103",
                                     style: ThemeStyle.whiteText14,
                                   ),
                                 ],
@@ -187,9 +187,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       ),
                       Container(
                         width: boxWidth - 20,
-                        margin: EdgeInsets.only(top: 15),
-                        padding: EdgeInsets.only(left: 5, bottom: 5),
-                        child: Text(
+                        margin: const EdgeInsets.only(top: 15),
+                        padding: const EdgeInsets.only(left: 5, bottom: 5),
+                        child: const Text(
                           "Next 5 days Forecast :",
                           style: ThemeStyle.whiteText16,
                           textAlign: TextAlign.start,
@@ -207,7 +207,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             scrollDirection: Axis.vertical,
                             itemCount: provider.yesterdayExist ? 5 : 6,
                             itemBuilder: (context, int index) => Container(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(20))),
                               child: Column(
@@ -234,25 +234,29 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                             style: ThemeStyle.whiteText14,
                                           ),
                                         ),
-                                        Spacer(),
-                                        ImageIcon(
-                                          AssetImage(
-                                              'assets/${allData[index][0]['weather']['icon']}.png'),
-                                          size: 50,
-                                          color: Colors.white,
+                                        const Spacer(),
+                                        Column(
+                                          children: [
+                                            ImageIcon(
+                                              AssetImage(
+                                                  'assets/${allData[index][0]['weather']['icon']}.png'),
+                                              size: 50,
+                                              color: Colors.white,
+                                            ),
+                                          ],
                                         ),
                                         Spacer(),
                                         Column(
                                           children: [
                                             Text(
-                                              "${(allData[index][0]['main']['temp_max'] - 273.15).round()}\u2103",
+                                              "H: ${(provider.maxTempList[index] - 273.15).round()}\u2103",
                                               style: ThemeStyle.whiteText14,
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 10,
                                             ),
                                             Text(
-                                              "${(allData[index][0]['main']['temp_min'] - 273.15).round()}\u2103",
+                                              "L: ${(provider.minTempList[index] - 273.15).round()}\u2103",
                                               style: ThemeStyle.whiteText14,
                                             ),
                                           ],
@@ -283,7 +287,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                   //     color: Colors.red,
                                   //   ),
                                   // ),
-                                  Divider(
+                                  const Divider(
                                     thickness: 3,
                                   ),
                                 ],
@@ -303,7 +307,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   moreInfo(listData) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderRadius: const BorderRadius.all(Radius.circular(20)),
           color: Colors.transparent,
           border: Border.all(color: Colors.white)),
       child: Column(
@@ -333,12 +337,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
               ],
             ),
           ),
-          Divider(
+          const Divider(
             thickness: 2,
           ),
           Container(
             height: 110,
-            margin: EdgeInsets.only(bottom: 10),
+            margin: const EdgeInsets.only(bottom: 10),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: listData.length,
@@ -361,7 +365,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       color: Colors.white,
                     ),
                     Text(
-                      "${(listData[index]['main']['temp_min'] - 273.15).round()}\u2103",
+                      "${(listData[index]['main']['feels_like'] - 273.15).round()}\u2103",
                       style: ThemeStyle.whiteText14,
                     ),
                   ],
