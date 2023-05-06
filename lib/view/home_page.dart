@@ -17,6 +17,10 @@ class HomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                "Weather App",
+                style: ThemeStyle.blackText28,
+              ),
               Image.asset("assets/welcome.png"),
               MaterialButton(
                   shape: const RoundedRectangleBorder(

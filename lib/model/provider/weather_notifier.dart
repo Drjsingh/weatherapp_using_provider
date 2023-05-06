@@ -79,6 +79,7 @@ class WeatherNotifier extends ChangeNotifier {
     }
     _location = response['city']['name'];
     weatherList.forEach((element) {
+      print("element---------------${element}");
       var dateTimeSplit = element['dt_txt'].split(' ');
       if (date1 == dateTimeSplit[0]) {
         _day1.add({

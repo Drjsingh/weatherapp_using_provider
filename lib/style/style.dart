@@ -27,4 +27,11 @@ abstract class ThemeStyle {
     color: Color(0xffFFFFFF),
     fontWeight: FontWeight.w400,
   );
+
+  static const TextStyle blackText28 = TextStyle(
+    fontSize: 28,
+    letterSpacing: 0,
+    color: Color(0xff111111),
+    fontWeight: FontWeight.w400,
+  );
 }
