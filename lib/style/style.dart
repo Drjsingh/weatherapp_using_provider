@@ -9,6 +9,13 @@ abstract class ThemeStyle {
     fontWeight: FontWeight.w400,
   );
 
+  static const TextStyle whiteText20 = TextStyle(
+    fontSize: 20,
+    letterSpacing: 0,
+    color: Color(0xffFFFFFF),
+    fontWeight: FontWeight.w400,
+  );
+
   static const TextStyle whiteText14 = TextStyle(
     fontSize: 14,
     letterSpacing: 0,

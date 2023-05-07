@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wether_app/style/style.dart';
 
 import '../model/provider/weather_notifier.dart';
@@ -295,7 +296,21 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             ),
                           ),
                         ),
-                      )
+                      ),
+                      MaterialButton(
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                          minWidth: 200,
+                          height: 42,
+                          color: const Color(0x6f6837f8),
+                          child: const Text(
+                            'Feedback',
+                            style: ThemeStyle.whiteText20,
+                          ),
+                          onPressed: () async {
+                            _sendEmail();
+                          }),
                     ],
                   ),
                 )),
@@ -376,5 +391,16 @@ class _WeatherScreenState extends State<WeatherScreen> {
         ],
       ),
     );
+  }
+
+  _sendEmail() async {
+    final Uri _emailLaunchUri = await Uri(
+        scheme: 'mailto',
+        path: 'dhirajraghunathsingh@gmail.com',
+        queryParameters: {
+          'subject': 'Weather App Feedback',
+          'body': '',
+        });
+    var getInfo = await launch(_emailLaunchUri.toString());
   }
 }
