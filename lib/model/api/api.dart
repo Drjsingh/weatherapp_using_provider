@@ -10,6 +10,7 @@ class ApiService {
     apiUrl =
         'https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}';
     final response = await http.get(Uri.parse(apiUrl));
+    print("response.body------${response.body}");
     return jsonDecode(response.body);
   }
 }

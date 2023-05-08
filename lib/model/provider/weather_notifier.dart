@@ -15,9 +15,10 @@ class WeatherNotifier extends ChangeNotifier {
   bool _dataLoading = false;
   bool _yesterdayExist = false;
   List maxTemp = [];
-  double maxTempVal = 0;
+  dynamic maxTempVal = 0;
   List minTemp = [];
-  double minTempVal = 400;
+  dynamic minTempVal = 400;
+
   var _allData = [];
   String date1 = '';
   String date2 = '';
@@ -183,6 +184,8 @@ class WeatherNotifier extends ChangeNotifier {
     minTemp.add(minTempVal);
     for (int i = 0; i < _day5.length; i++) {
       if (maxTempVal < _day5[i]['main']['temp_max']) {
+        print(
+            "_day5[i]['main']['temp_max']========${_day5[i]['main']['temp_max']}");
         maxTempVal = _day5[i]['main']['temp_max'];
       }
       if (minTempVal > _day5[i]['main']['temp_min']) {
